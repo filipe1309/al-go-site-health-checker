@@ -8,38 +8,40 @@ import (
 )
 
 func main() {
-
 	showIntro()
-	showMenu()
 
-	// name, age := returnNomeAndAge()
-	// fmt.Println(name, age)
-	// _, age := returnNomeAndAge()
-	// fmt.Println(age)
+	for {
+		showMenu()
 
-	command := readCommand()
+		// name, age := returnNomeAndAge()
+		// fmt.Println(name, age)
+		// _, age := returnNomeAndAge()
+		// fmt.Println(age)
 
-	// if command == 1 {
-	// 	fmt.Println("Monitoring...")
-	// } else if command == 2 {
-	// 	fmt.Println("Showing Logs...")
-	// } else if command == 0 {
-	// 	fmt.Println("Exiting...")
-	// } else {
-	// 	fmt.Println("Wrong command!")
-	// }
+		command := readCommand()
 
-	switch command {
-	case 1:
-		initMonitoring()
-	case 2:
-		fmt.Println("Showing Logs...")
-	case 0:
-		fmt.Println("Exiting...")
-		os.Exit(0)
-	default:
-		fmt.Println("Wrong command!")
-		os.Exit(-1)
+		// if command == 1 {
+		// 	fmt.Println("Monitoring...")
+		// } else if command == 2 {
+		// 	fmt.Println("Showing Logs...")
+		// } else if command == 0 {
+		// 	fmt.Println("Exiting...")
+		// } else {
+		// 	fmt.Println("Wrong command!")
+		// }
+
+		switch command {
+		case 1:
+			initMonitoring()
+		case 2:
+			fmt.Println("Showing Logs...")
+		case 0:
+			fmt.Println("Exiting...")
+			os.Exit(0)
+		default:
+			fmt.Println("Wrong command!")
+			os.Exit(-1)
+		}
 	}
 
 }
@@ -81,7 +83,12 @@ func readCommand() int {
 
 func initMonitoring() {
 	fmt.Println("Monitoring...")
-	site := "https://www.alura.com.br"
+	site := "https://random-status-code.herokuapp.com/"
 	resp, _ := http.Get(site)
-	fmt.Println(resp)
+
+	if resp.StatusCode == 200 {
+		fmt.Println("Site", site, "loaded with success")
+	} else {
+		fmt.Println("Site", site, "not loaded. Status Code:", resp.StatusCode)
+	}
 }
