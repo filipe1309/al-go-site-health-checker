@@ -11,6 +11,12 @@ func main() {
 
 	showIntro()
 	showMenu()
+
+	// name, age := returnNomeAndAge()
+	// fmt.Println(name, age)
+	// _, age := returnNomeAndAge()
+	// fmt.Println(age)
+
 	command := readCommand()
 
 	// if command == 1 {
@@ -37,6 +43,12 @@ func main() {
 	}
 
 }
+
+// func returnNomeAndAge() (string, int) {
+// 	name := "Filipe"
+// 	age := 30
+// 	return name, age
+// }
 
 func showIntro() {
 	name := "Filipe" // = var name string = "Filipe"
@@ -70,6 +82,6 @@ func readCommand() int {
 func initMonitoring() {
 	fmt.Println("Monitoring...")
 	site := "https://www.alura.com.br"
-	resp, err := http.Get(site)
-	fmt.Println(resp, err)
+	resp, _ := http.Get(site)
+	fmt.Println(resp)
 }
