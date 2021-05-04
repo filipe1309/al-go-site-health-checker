@@ -26,13 +26,24 @@ func main() {
 	fmt.Println("Command address: ", &command)
 	fmt.Println("Command: ", command)
 
-	if command == 1 {
+	// if command == 1 {
+	// 	fmt.Println("Monitoring...")
+	// } else if command == 2 {
+	// 	fmt.Println("Showing Logs...")
+	// } else if command == 0 {
+	// 	fmt.Println("Exiting...")
+	// } else {
+	// 	fmt.Println("Wrong command!")
+	// }
+
+	switch command {
+	case 1:
 		fmt.Println("Monitoring...")
-	} else if command == 2 {
+	case 2:
 		fmt.Println("Showing Logs...")
-	} else if command == 0 {
+	case 0:
 		fmt.Println("Exiting...")
-	} else {
+	default:
 		fmt.Println("Wrong command!")
 	}
 
