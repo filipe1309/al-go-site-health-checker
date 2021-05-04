@@ -1,12 +1,18 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"reflect"
+)
 
 func main() {
-	var name string = "Filipe"
-	var age int
-	var version float32 = 1.1
-	fmt.Println("Hi,", name)
-	fmt.Println("age:", age)
+	name := "Filipe" // = var name string = "Filipe"
+	age := 30
+	version := 1.1
+	fmt.Println("Hi,", name, ", age:", age)
 	fmt.Println("This app is in version,", version)
+
+	fmt.Println("The type of var name is:", reflect.TypeOf(name))
+	fmt.Println("The type of var age is:", reflect.TypeOf(age))
+	fmt.Println("The type of var version is:", reflect.TypeOf(version))
 }
