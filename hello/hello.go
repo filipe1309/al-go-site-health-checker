@@ -8,28 +8,12 @@ import (
 )
 
 func main() {
-	showNames()
 	showIntro()
 
 	for {
 		showMenu()
 
-		// name, age := returnNomeAndAge()
-		// fmt.Println(name, age)
-		// _, age := returnNomeAndAge()
-		// fmt.Println(age)
-
 		command := readCommand()
-
-		// if command == 1 {
-		// 	fmt.Println("Monitoring...")
-		// } else if command == 2 {
-		// 	fmt.Println("Showing Logs...")
-		// } else if command == 0 {
-		// 	fmt.Println("Exiting...")
-		// } else {
-		// 	fmt.Println("Wrong command!")
-		// }
 
 		switch command {
 		case 1:
@@ -46,12 +30,6 @@ func main() {
 	}
 
 }
-
-// func returnNomeAndAge() (string, int) {
-// 	name := "Filipe"
-// 	age := 30
-// 	return name, age
-// }
 
 func showIntro() {
 	name := "Filipe" // = var name string = "Filipe"
@@ -100,20 +78,4 @@ func initMonitoring() {
 	} else {
 		fmt.Println("Site", site, "not loaded. Status Code:", resp.StatusCode)
 	}
-}
-
-func showNames() {
-	// Slice example
-	names := []string{"Filipe", "Bob", "John"}
-	fmt.Println(names)
-	fmt.Println(reflect.TypeOf(names))
-	fmt.Println("size:", len(names), "items")
-	fmt.Println("capacity:", cap(names), "items")
-
-	names = append(names, "Mary")
-
-	fmt.Println(names)
-	fmt.Println(reflect.TypeOf(names))
-	fmt.Println("size:", len(names), "items")
-	fmt.Println("capacity:", cap(names), "items")
 }
