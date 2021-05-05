@@ -8,6 +8,7 @@ import (
 )
 
 func main() {
+	showNames()
 	showIntro()
 
 	for {
@@ -89,6 +90,7 @@ func initMonitoring() {
 	sites[2] = "https://www.caelum.com.br"
 
 	fmt.Println(sites)
+	fmt.Println(reflect.TypeOf(sites))
 
 	site := "https://random-status-code.herokuapp.com/"
 	resp, _ := http.Get(site)
@@ -98,4 +100,20 @@ func initMonitoring() {
 	} else {
 		fmt.Println("Site", site, "not loaded. Status Code:", resp.StatusCode)
 	}
+}
+
+func showNames() {
+	// Slice example
+	names := []string{"Filipe", "Bob", "John"}
+	fmt.Println(names)
+	fmt.Println(reflect.TypeOf(names))
+	fmt.Println("size:", len(names), "items")
+	fmt.Println("capacity:", cap(names), "items")
+
+	names = append(names, "Mary")
+
+	fmt.Println(names)
+	fmt.Println(reflect.TypeOf(names))
+	fmt.Println("size:", len(names), "items")
+	fmt.Println("capacity:", cap(names), "items")
 }
