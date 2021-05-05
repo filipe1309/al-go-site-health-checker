@@ -62,20 +62,20 @@ func readCommand() int {
 
 func initMonitoring() {
 	fmt.Println("Monitoring...")
-	var sites [4]string
-	sites[0] = "https://random-status-code.herokuapp.com/"
-	sites[1] = "https://www.alura.com.br"
-	sites[2] = "https://www.caelum.com.br"
+	sites := []string{"https://random-status-code.herokuapp.com/", "https://www.alura.com.br", "https://www.caelum.com.br"}
 
 	fmt.Println(sites)
 	fmt.Println(reflect.TypeOf(sites))
 
-	site := "https://random-status-code.herokuapp.com/"
-	resp, _ := http.Get(site)
+	//for i := 0; i < len(sites); i++ {
+	for i, site := range sites {
+		resp, _ := http.Get(site)
 
-	if resp.StatusCode == 200 {
-		fmt.Println("Site", site, "loaded with success")
-	} else {
-		fmt.Println("Site", site, "not loaded. Status Code:", resp.StatusCode)
+		if resp.StatusCode == 200 {
+			fmt.Println("Site", i, ":", site, "loaded with success")
+		} else {
+			fmt.Println("Site", i, ":", site, "not loaded. Status Code:", resp.StatusCode)
+		}
 	}
+
 }

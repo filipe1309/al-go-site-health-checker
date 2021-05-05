@@ -17,3 +17,42 @@ go run hello/hello.go
 https://golang.org/pkg/
 
 https://random-status-code.herokuapp.com/
+
+// name, age := returnNomeAndAge()
+// fmt.Println(name, age)
+// \_, age := returnNomeAndAge()
+// fmt.Println(age)
+
+// if command == 1 {
+// fmt.Println("Monitoring...")
+// } else if command == 2 {
+// fmt.Println("Showing Logs...")
+// } else if command == 0 {
+// fmt.Println("Exiting...")
+// } else {
+// fmt.Println("Wrong command!")
+// }
+
+// func returnNomeAndAge() (string, int) {
+// name := "Filipe"
+// age := 30
+// return name, age
+// }
+
+// func showNames() {
+// // Slice example
+// names := []string{"Filipe", "Bob", "John"}
+// fmt.Println(names)
+// fmt.Println(reflect.TypeOf(names))
+// fmt.Println("size:", len(names), "items")
+// fmt.Println("capacity:", cap(names), "items")
+
+// names = append(names, "Mary")
+
+// fmt.Println(names)
+// fmt.Println(reflect.TypeOf(names))
+// fmt.Println("size:", len(names), "items")
+// fmt.Println("capacity:", cap(names), "items")
+// }
+
+//for i := 0; i < len(sites); i++ {
