@@ -5,7 +5,11 @@ import (
 	"net/http"
 	"os"
 	"reflect"
+	"time"
 )
+
+const MONITORING = 3
+const DELAY = 5
 
 func main() {
 	showIntro()
@@ -13,22 +17,7 @@ func main() {
 	for {
 		showMenu()
 
-		// name, age := returnNomeAndAge()
-		// fmt.Println(name, age)
-		// _, age := returnNomeAndAge()
-		// fmt.Println(age)
-
 		command := readCommand()
-
-		// if command == 1 {
-		// 	fmt.Println("Monitoring...")
-		// } else if command == 2 {
-		// 	fmt.Println("Showing Logs...")
-		// } else if command == 0 {
-		// 	fmt.Println("Exiting...")
-		// } else {
-		// 	fmt.Println("Wrong command!")
-		// }
 
 		switch command {
 		case 1:
@@ -45,12 +34,6 @@ func main() {
 	}
 
 }
-
-// func returnNomeAndAge() (string, int) {
-// 	name := "Filipe"
-// 	age := 30
-// 	return name, age
-// }
 
 func showIntro() {
 	name := "Filipe" // = var name string = "Filipe"
@@ -83,7 +66,23 @@ func readCommand() int {
 
 func initMonitoring() {
 	fmt.Println("Monitoring...")
-	site := "https://random-status-code.herokuapp.com/"
+	sites := []string{"https://random-status-code.herokuapp.com/", "https://www.alura.com.br", "https://www.caelum.com.br"}
+
+	fmt.Println(sites)
+	fmt.Println(reflect.TypeOf(sites))
+
+	for i := 0; i < MONITORING; i++ {
+		for i, site := range sites {
+			fmt.Println("Testing site", i, ":", site)
+			testSite(site)
+		}
+		time.Sleep(DELAY * time.Second)
+	}
+
+	fmt.Println()
+}
+
+func testSite(site string) {
 	resp, _ := http.Get(site)
 
 	if resp.StatusCode == 200 {
