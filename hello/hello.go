@@ -5,7 +5,11 @@ import (
 	"net/http"
 	"os"
 	"reflect"
+	"time"
 )
+
+const MONITORING = 3
+const DELAY = 5
 
 func main() {
 	showIntro()
@@ -67,15 +71,23 @@ func initMonitoring() {
 	fmt.Println(sites)
 	fmt.Println(reflect.TypeOf(sites))
 
-	//for i := 0; i < len(sites); i++ {
-	for i, site := range sites {
-		resp, _ := http.Get(site)
-
-		if resp.StatusCode == 200 {
-			fmt.Println("Site", i, ":", site, "loaded with success")
-		} else {
-			fmt.Println("Site", i, ":", site, "not loaded. Status Code:", resp.StatusCode)
+	for i := 0; i < MONITORING; i++ {
+		for i, site := range sites {
+			fmt.Println("Testing site", i, ":", site)
+			testSite(site)
 		}
+		time.Sleep(DELAY * time.Second)
 	}
 
+	fmt.Println()
+}
+
+func testSite(site string) {
+	resp, _ := http.Get(site)
+
+	if resp.StatusCode == 200 {
+		fmt.Println("Site", site, "loaded with success")
+	} else {
+		fmt.Println("Site", site, "not loaded. Status Code:", resp.StatusCode)
+	}
 }
