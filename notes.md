@@ -60,3 +60,5 @@ https://random-status-code.herokuapp.com/
 // file, err := ioutil.ReadFile("hello/sites.txt")
 
 https://golang.org/pkg/os/#pkg-constants
+
+https://golang.org/src/time/format.go
