@@ -56,3 +56,9 @@ https://random-status-code.herokuapp.com/
 // }
 
 //for i := 0; i < len(sites); i++ {
+
+// file, err := ioutil.ReadFile("hello/sites.txt")
+
+https://golang.org/pkg/os/#pkg-constants
+
+https://golang.org/src/time/format.go
