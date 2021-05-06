@@ -1,10 +1,13 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
+	"io"
 	"net/http"
 	"os"
 	"reflect"
+	"strings"
 	"time"
 )
 
@@ -66,7 +69,8 @@ func readCommand() int {
 
 func initMonitoring() {
 	fmt.Println("Monitoring...")
-	sites := []string{"https://random-status-code.herokuapp.com/", "https://www.alura.com.br", "https://www.caelum.com.br"}
+
+	sites := readFileSites()
 
 	fmt.Println(sites)
 	fmt.Println(reflect.TypeOf(sites))
@@ -83,11 +87,42 @@ func initMonitoring() {
 }
 
 func testSite(site string) {
-	resp, _ := http.Get(site)
+	resp, err := http.Get(site)
+
+	if err != nil {
+		fmt.Println("Error:", err)
+	}
 
 	if resp.StatusCode == 200 {
 		fmt.Println("Site", site, "loaded with success")
 	} else {
 		fmt.Println("Site", site, "not loaded. Status Code:", resp.StatusCode)
 	}
+}
+
+func readFileSites() []string {
+	var sites []string
+
+	file, err := os.Open("hello/sites.txt")
+
+	if err != nil {
+		fmt.Println("Error:", err)
+	}
+
+	reader := bufio.NewReader(file)
+
+	for {
+		line, err := reader.ReadString('\n')
+		line = strings.TrimSpace(line)
+
+		sites = append(sites, line)
+
+		if err == io.EOF {
+			break
+		}
+	}
+
+	file.Close()
+
+	return sites
 }
