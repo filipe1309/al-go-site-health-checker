@@ -1,7 +1,6 @@
-# <p align="center">Site Health Checker with Go 🐋</p>
+# <p align="center">Site Health Checker with Go</p>
 
 <p align="center">
-<img src="https://img.shields.io/badge/Tools-Docker-informational?style=flat-square&logo=docker&color=2496ED" alt="Docker"/>
 <img src="https://img.shields.io/badge/Code-Go-informational?style=flat-square&logo=go&color=00ADD8" alt="Go"/>
 </p>
 
@@ -11,17 +10,16 @@ This project was developed following [Go: Iniciando com a linguagem do Google](h
 
 ## :computer: Technologies
 
--   [Docker](https://www.docker.com/)
 -   [Go](https://golang.org/)
 
 ## :scroll: Requirements
 
--   [Docker](https://www.docker.com/)
+-   [Go](https://golang.org/)
 
 ## :runner: Running
 
 ```sh
-docker run --rm ...
+go run hello/hello.go
 ```
 
 ## License
