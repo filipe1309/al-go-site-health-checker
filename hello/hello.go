@@ -66,7 +66,8 @@ func readCommand() int {
 
 func initMonitoring() {
 	fmt.Println("Monitoring...")
-	sites := []string{"https://random-status-code.herokuapp.com/", "https://www.alura.com.br", "https://www.caelum.com.br"}
+
+	sites := readFileSites()
 
 	fmt.Println(sites)
 	fmt.Println(reflect.TypeOf(sites))
@@ -90,4 +91,13 @@ func testSite(site string) {
 	} else {
 		fmt.Println("Site", site, "not loaded. Status Code:", resp.StatusCode)
 	}
+}
+
+func readFileSites() []string {
+	file, _ := os.Open("sites.txt")
+
+	fmt.Println(file)
+
+	sites := []string{"https://random-status-code.herokuapp.com/", "https://www.alura.com.br", "https://www.caelum.com.br"}
+	return sites
 }
