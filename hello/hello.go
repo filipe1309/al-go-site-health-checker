@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
 	"net/http"
 	"os"
@@ -104,7 +105,15 @@ func readFileSites() []string {
 		fmt.Println("Error:", err)
 	}
 
-	fmt.Println(file)
+	reader := bufio.NewReader(file)
+
+	line, err := reader.ReadString('\n')
+
+	if err != nil {
+		fmt.Println("Error:", err)
+	}
+
+	fmt.Println(line)
 
 	sites := []string{"https://random-status-code.herokuapp.com/", "https://www.alura.com.br", "https://www.caelum.com.br"}
 	return sites
