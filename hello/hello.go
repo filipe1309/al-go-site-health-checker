@@ -3,9 +3,11 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"io"
 	"net/http"
 	"os"
 	"reflect"
+	"strings"
 	"time"
 )
 
@@ -99,6 +101,8 @@ func testSite(site string) {
 }
 
 func readFileSites() []string {
+	var sites []string
+
 	file, err := os.Open("hello/sites.txt")
 
 	if err != nil {
@@ -107,14 +111,18 @@ func readFileSites() []string {
 
 	reader := bufio.NewReader(file)
 
-	line, err := reader.ReadString('\n')
+	for {
+		line, err := reader.ReadString('\n')
+		line = strings.TrimSpace(line)
 
-	if err != nil {
-		fmt.Println("Error:", err)
+		sites = append(sites, line)
+
+		if err == io.EOF {
+			break
+		}
 	}
 
-	fmt.Println(line)
+	file.Close()
 
-	sites := []string{"https://random-status-code.herokuapp.com/", "https://www.alura.com.br", "https://www.caelum.com.br"}
 	return sites
 }
