@@ -84,7 +84,11 @@ func initMonitoring() {
 }
 
 func testSite(site string) {
-	resp, _ := http.Get(site)
+	resp, err := http.Get(site)
+
+	if err != nil {
+		fmt.Println("Error:", err)
+	}
 
 	if resp.StatusCode == 200 {
 		fmt.Println("Site", site, "loaded with success")
@@ -94,7 +98,11 @@ func testSite(site string) {
 }
 
 func readFileSites() []string {
-	file, _ := os.Open("sites.txt")
+	file, err := os.Open("hello/sites.txt")
+
+	if err != nil {
+		fmt.Println("Error:", err)
+	}
 
 	fmt.Println(file)
 
