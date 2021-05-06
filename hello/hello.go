@@ -17,6 +17,8 @@ const DELAY = 5
 func main() {
 	showIntro()
 
+	registerLog("fakesite", false)
+
 	for {
 		showMenu()
 
@@ -95,8 +97,10 @@ func testSite(site string) {
 
 	if resp.StatusCode == 200 {
 		fmt.Println("Site", site, "loaded with success")
+		registerLog(site, true)
 	} else {
 		fmt.Println("Site", site, "not loaded. Status Code:", resp.StatusCode)
+		registerLog(site, false)
 	}
 }
 
@@ -125,4 +129,14 @@ func readFileSites() []string {
 	file.Close()
 
 	return sites
+}
+
+func registerLog(site string, status bool) {
+	file, err := os.OpenFile("hello/log.txt", os.O_RDWR|os.O_CREATE, 0666)
+
+	if err != nil {
+		fmt.Println("Error:", err)
+	}
+
+	fmt.Println(file)
 }
